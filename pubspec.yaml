@@ -67,6 +67,7 @@ dependencies:
   syncfusion_flutter_charts: ^27.1.57
   change_app_package_name: ^1.4.0
   flutter_launcher_icons: ^0.14.2
+  flutter_lints: ^5.0.0
 
   
 
