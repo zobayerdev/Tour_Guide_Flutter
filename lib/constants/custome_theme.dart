@@ -1,5 +1,5 @@
+import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:flutter/material.dart';
-import '../gen/colors.gen.dart';
 
 final class CustomTheme {
   CustomTheme._();
@@ -20,7 +20,7 @@ final class CustomTheme {
   );
   static ThemeData get mainTheme {
     return ThemeData(
-      primaryColor: AppColors.allPrimaryColor,
+      primaryColor: AppColors.primaryColor,
       primarySwatch: CustomTheme.kToDark,
       scaffoldBackgroundColor: AppColors.scaffoldColor,
     );

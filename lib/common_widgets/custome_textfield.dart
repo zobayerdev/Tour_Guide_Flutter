@@ -1,7 +1,5 @@
+import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../gen/colors.gen.dart';
 
 // ignore: must_be_immutable
 final class CustomNumberFormField extends StatelessWidget {
@@ -27,7 +25,7 @@ final class CustomNumberFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: fieldHeight ?? 35.h,
+      height: fieldHeight ?? 35,
       child: TextFormField(
         cursorHeight: 20.0,
         autovalidateMode: validation! ? AutovalidateMode.always : AutovalidateMode.disabled,
@@ -39,7 +37,7 @@ final class CustomNumberFormField extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(
             letterSpacing: 1,
-            fontSize: 12.sp,
+            fontSize: 12,
             fontWeight: FontWeight.w500,
             fontStyle: FontStyle.normal,
             color: AppColors.c9B9B9B,
@@ -47,48 +45,48 @@ final class CustomNumberFormField extends StatelessWidget {
           //labelText: labelText,
           labelStyle: TextStyle(
             letterSpacing: 1,
-            fontSize: 14.sp,
+            fontSize: 14,
             fontWeight: FontWeight.w100,
             fontStyle: FontStyle.normal,
             color: AppColors.c9B9B9B,
           ),
           errorStyle: TextStyle(
             letterSpacing: 1,
-            fontSize: 14.sp,
+            fontSize: 14,
             fontWeight: FontWeight.w100,
             fontStyle: FontStyle.normal,
             color: Colors.red,
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.0.r),
+            borderRadius: BorderRadius.circular(2.0),
             borderSide: const BorderSide(
               color: AppColors.c9B9B9B,
               width: 1.5,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.0.r),
+            borderRadius: BorderRadius.circular(2.0),
             borderSide: const BorderSide(
               color: AppColors.c9B9B9B,
               width: 1.5,
             ),
           ),
           disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0.r),
+            borderRadius: BorderRadius.circular(5.0),
             borderSide: const BorderSide(
               color: AppColors.c9B9B9B,
               width: 1.5,
             ),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.0.r),
+            borderRadius: BorderRadius.circular(2.0),
             borderSide: const BorderSide(
               color: Colors.red,
               width: 1.5,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.0.r),
+            borderRadius: BorderRadius.circular(2.0),
             borderSide: const BorderSide(
               color: AppColors.c9B9B9B,
               width: 1.5,
@@ -97,7 +95,7 @@ final class CustomNumberFormField extends StatelessWidget {
         ),
         style: TextStyle(
           letterSpacing: 1.5,
-          fontSize: 18.sp,
+          fontSize: 18,
           fontWeight: FontWeight.w100,
           fontStyle: FontStyle.normal,
           color: AppColors.c9B9B9B,

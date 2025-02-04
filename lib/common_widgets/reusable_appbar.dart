@@ -1,7 +1,6 @@
+import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../constants/text_font_style.dart';
-import '../gen/colors.gen.dart';
+import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import '../helpers/navigation_service.dart';
 
 class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -34,13 +33,13 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(
                 Icons.arrow_back_ios,
                 color: AppColors.c394456,
-                size: 18.sp,
+                size: 18,
               ),
             )
           : null,
       title: Text(
         title,
-        style: TextFontStyle.textStyle14c334155Poppins400,
+        style: TextFontStyle.textStyle14w400Poppins,
       ),
       actions: actions,
       bottom: bottom,

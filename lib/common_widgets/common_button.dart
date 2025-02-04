@@ -1,7 +1,6 @@
+import 'package:boylar_plate/assets_helper/app_colors.dart';
+import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../constants/text_font_style.dart';
-import '../gen/colors.gen.dart';
 
 class CommonButton extends StatelessWidget {
   final String? imagePath;
@@ -29,14 +28,14 @@ class CommonButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         width: double.infinity,
-        height: 56.h,
-        padding: EdgeInsets.symmetric(horizontal: 5.w),
+        height: 56,
+        padding: EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
-          color: color ?? AppColors.allPrimaryColor,
-          borderRadius: BorderRadius.circular(8.r),
+          color: color ?? AppColors.primaryColor,
+          borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: borderColor ?? AppColors.allPrimaryColor,
-            width: 1.sp,
+            color: borderColor ?? AppColors.primaryColor,
+            width: 1,
           ),
         ),
         child: Row(
@@ -44,17 +43,17 @@ class CommonButton extends StatelessWidget {
           children: [
             if (imagePath != null)
               Padding(
-                padding: EdgeInsets.only(right: 8.w),
+                padding: EdgeInsets.only(right: 8),
                 child: Image.asset(
                   imagePath!,
-                  height: 20.h,
-                  width: 20.w,
+                  height: 20,
+                  width: 20,
                   color: imageColor ?? Colors.white,
                 ),
               ),
             Text(
               label,
-              style: TextFontStyle.textStyle16c848484Poppins500.copyWith(
+              style: TextFontStyle.textStyle16w400Poppins.copyWith(
                 color: textColor ?? Colors.white,
               ),
             ),

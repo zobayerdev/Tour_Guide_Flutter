@@ -2,17 +2,16 @@
 
 import 'dart:async';
 import 'dart:io';
+import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 // import 'package:http/http.dart' as http;
 import '/helpers/di.dart';
 import '../common_widgets/custom_button.dart';
 import '../constants/app_constants.dart';
-import '../constants/text_font_style.dart';
-import '../gen/colors.gen.dart';
+import 'package:boylar_plate/assets_helper/app_fonts.dart';
+
 
 //final appData = locator.get<GetStorage>();
 // final plcaeMarkAddress = locator.get<PlcaeMarkAddress>();
@@ -22,65 +21,6 @@ final GlobalKey<PopupMenuButtonState<String>> popUpGlobalkey =
     GlobalKey<PopupMenuButtonState<String>>();
 
 enum StatusType { order, delivery }
-
-Color statuscolor(StatusType status, String statusCode) {
-  late Color stcolor;
-  if (StatusType.order == status) {
-    switch (statusCode) {
-      case OrderStatusNo.kPENDING:
-        stcolor = OrderStatusColor.kPENDING;
-        break;
-      case OrderStatusNo.kACCEPTED:
-        stcolor = OrderStatusColor.kACCEPTED;
-        break;
-      case OrderStatusNo.kFOODPROCESSING:
-        stcolor = OrderStatusColor.kFOODPROCESSING;
-        break;
-      case OrderStatusNo.kFOODREADY:
-        stcolor = OrderStatusColor.kFOODREADY;
-        break;
-      case OrderStatusNo.kFOODPICKED:
-        stcolor = OrderStatusColor.kFOODPICKED;
-        break;
-      case OrderStatusNo.kFOODDELIVERED:
-        stcolor = OrderStatusColor.kFOODDELIVERED;
-        break;
-      case OrderStatusNo.kCANCELLED:
-        stcolor = OrderStatusColor.kCANCELLED;
-        break;
-      case OrderStatusNo.kREJECTEDBYSHOP:
-        stcolor = OrderStatusColor.kREJECTEDBYSHOP;
-        break;
-      case OrderStatusNo.kFAILED:
-        stcolor = OrderStatusColor.kFAILED;
-        break;
-    }
-  }
-  if (StatusType.delivery == status) {
-    switch (statusCode) {
-      case DeliveryStatusNo.kPENDIG:
-        stcolor = DeliveryStatusColor.kPENDING;
-        break;
-      case DeliveryStatusNo.kONTRANSIT:
-        stcolor = DeliveryStatusColor.kONTRANSIT;
-        break;
-      case DeliveryStatusNo.kARRIVEDATSHOP:
-        stcolor = DeliveryStatusColor.kARRIVEDATSHOP;
-        break;
-      case DeliveryStatusNo.kDELIVERYMANCONFIRMED:
-        stcolor = DeliveryStatusColor.kDELIVERYMANCONFIRMED;
-        break;
-      case DeliveryStatusNo.kDELIVERYSTARTED:
-        stcolor = DeliveryStatusColor.kDELIVERYSTARTED;
-        break;
-      case DeliveryStatusNo.kDELIVERED:
-        stcolor = DeliveryStatusColor.kDELIVERED;
-        break;
-    }
-  }
-
-  return stcolor;
-}
 
 String language(String languageKey) {
   late String language;
@@ -247,7 +187,7 @@ void showMaterialDialog(
             title: Text(
               "Do you want to exit the app?",
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle14c334155Poppins400,
+              style: TextFontStyle.textStyle14w400Poppins,
             ),
             actions: <Widget>[
               customButton(
@@ -255,14 +195,11 @@ void showMaterialDialog(
                   onCallBack: () {
                     Navigator.of(context).pop(false);
                   },
-                  height: 30.sp,
-                  minWidth: .3.sw,
-                  borderRadius: 30.r,
+                  height: 30,
+                  minWidth: .3,
+                  borderRadius: 30,
                   color: AppColors.cF0F0F0,
-                  textStyle: GoogleFonts.montserrat(
-                      fontSize: 17.sp,
-                      color: AppColors.allPrimaryColor,
-                      fontWeight: FontWeight.w700),
+                  textStyle:TextFontStyle.textStyle17w700Poppins,
                   context: context),
               customButton(
                   name: "Yes".tr,
@@ -273,15 +210,12 @@ void showMaterialDialog(
                       exit(0);
                     }
                   },
-                  height: 30.sp,
-                  minWidth: .3.sw,
-                  borderRadius: 30.r,
-                  color: AppColors.allPrimaryColor,
-                  textStyle: GoogleFonts.montserrat(
-                      fontSize: 17.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700),
-                  context: context),
+                  height: 30,
+                  minWidth: .3,
+                  borderRadius: 30,
+                  color: AppColors.primaryColor,
+                  textStyle:TextFontStyle.textStyle17w700Poppins,
+                  context: context,),
             ],
           ));
 }

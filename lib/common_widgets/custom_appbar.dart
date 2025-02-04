@@ -1,9 +1,8 @@
+import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../constants/text_font_style.dart';
-import '../gen/assets.gen.dart';
+import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import '../helpers/navigation_service.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -29,15 +28,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: leadingIconUnVisible
           ? null
           : Padding(
-              padding: EdgeInsets.all(14.sp),
+              padding: EdgeInsets.all(14),
               child: InkWell(
                 onTap: () {
                   NavigationService.goBack;
                 },
                 child: SvgPicture.asset(
-                  Assets.icons.arrowPrevious,
-                  height: 28.h,
-                  width: 28.w,
+                  AppIcons.arrowPrevious,
+                  height: 28,
+                  width: 28,
                 ),
               ),
             ),
@@ -45,7 +44,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: isCenterd,
       title: Text(
         title ?? '',
-        style: TextFontStyle.headline18w600c141414StyledmPoppins,
+        style: TextFontStyle.textStyle18w600Poppins,
       ),
       actions: actions,
     );

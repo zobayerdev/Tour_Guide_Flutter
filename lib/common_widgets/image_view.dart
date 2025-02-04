@@ -1,11 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'dart:io';
-
+import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../gen/colors.gen.dart';
 
 final class ImageView extends StatelessWidget {
   final String? url;
@@ -19,7 +16,7 @@ final class ImageView extends StatelessWidget {
       height: height != 0.0 ? height : null,
       width: width != 0.0 ? width : null,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5.0.r),
+        borderRadius: BorderRadius.circular(5.0),
         border: Border.all(
           color: AppColors.cEDBB43,
           width: 1.5,

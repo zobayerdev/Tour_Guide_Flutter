@@ -1,7 +1,6 @@
+import 'package:boylar_plate/assets_helper/app_colors.dart';
+import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'gen/assets.gen.dart';
-import 'gen/colors.gen.dart';
 
 final class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -9,7 +8,7 @@ final class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.allPrimaryColor,
+      backgroundColor: AppColors.primaryColor,
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
@@ -18,12 +17,12 @@ final class WelcomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: 40.h,
+              height: 40,
             ),
             Image.asset(
-              Assets.images.appLogo.path,
-              height: 170.h,
-              width: 170.w,
+              AppImages.appLogo,
+              height: 170,
+              width: 170,
             ),
           ],
         ),

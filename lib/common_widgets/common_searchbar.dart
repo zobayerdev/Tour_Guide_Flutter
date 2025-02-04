@@ -1,9 +1,8 @@
+import 'package:boylar_plate/assets_helper/app_colors.dart';
+import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:boylar_plate/assets_helper/app_fonts.dart';
 
-import '../constants/text_font_style.dart';
-import '../gen/assets.gen.dart';
-import '../gen/colors.gen.dart';
 
 class CommonSearchBar extends StatelessWidget {
   const CommonSearchBar({
@@ -23,24 +22,25 @@ class CommonSearchBar extends StatelessWidget {
       onFieldSubmitted: onSubmitted,
       controller: controller,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 12.h),
+        contentPadding: EdgeInsets.symmetric(vertical: 12),
         hintText: hintText,
-        hintStyle: TextFontStyle.textStyle12cC2C2C2Popinsw400.copyWith(
+        hintStyle: TextFontStyle.textStyle12w400Poppins.copyWith(
           color: AppColors.c5A5C5F,
         ),
         prefixIcon: Padding(
-          padding: EdgeInsets.all(12.0.sp),
+          padding: EdgeInsets.all(12.0),
           child: Image.asset(
-              height: 14.h,
-              width: 14.w,
+              height: 14,
+              width: 14,
               fit: BoxFit.cover,
-              Assets.images.searchsNew.path),
+              AppImages.searchImage,
+              ),
         ),
 
         border: OutlineInputBorder(),
         // enabledBorder: OutlineInputBorder(),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.allPrimaryColor),
+          borderSide: BorderSide(color: AppColors.primaryColor,),
         ),
       ),
     );

@@ -1,9 +1,9 @@
+import 'package:boylar_plate/features/auth_screen/sign_in_screen/presentation/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'constants/app_constants.dart';
 
 import 'helpers/di.dart';
 import 'helpers/helper_methods.dart';
-import 'helpers/post_login.dart';
 import 'networks/dio/dio.dart';
 import 'welcome_screen.dart';
 
@@ -32,7 +32,6 @@ class _LoadingState extends State<Loading> {
     if (appData.read(kKeyIsLoggedIn)) {
       String token = appData.read(kKeyAccessToken);
       DioSingleton.instance.update(token);
-      performPostLoginActions();
     } else {
       //  NotificationService().cancelAllNotifications();
     }
@@ -49,7 +48,7 @@ class _LoadingState extends State<Loading> {
       return appData.read(kKeyIsLoggedIn)
           ? WelcomeScreen()
           : appData.read(kKeyfirstTime)
-              ? WelcomeScreen() //AuthRuleScreen()
+              ? SignInScreen() //AuthRuleScreen()
               : WelcomeScreen();
     }
     /* return TimeAppointmentScreen();

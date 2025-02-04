@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:boylar_plate/features/auth_screen/sign_in_screen/presentation/sign_in_screen.dart';
+import 'package:boylar_plate/features/auth_screen/sign_up_screen/presentation/sign_up_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 final class Routes {
@@ -5,8 +9,9 @@ final class Routes {
   Routes._internal();
   static Routes get instance => _routes;
 
-  // ################## Auth User ##################
-  static const String logInUserScreen = '/logInUserScreen';
+  // ################## Auth User #####################
+  static const String signInScreen = '/sign_in_screen';
+  static const String signUpScreen = '/sign_up_screen';
 }
 
 final class RouteGenerator {
@@ -16,33 +21,21 @@ final class RouteGenerator {
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.logInUserScreen:
-      //   return Platform.isAndroid
-      //       ? _FadedTransitionRoute(
-      //           widget: LoginUserScreen(), settings: settings)
-      //       : CupertinoPageRoute(builder: (context) => LoginUserScreen());
+      case Routes.signInScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: SignInScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => SignInScreen());
+
+      case Routes.signUpScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: SignUpScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => SignUpScreen());
 
       default:
         return null;
     }
   }
 }
-
-//  weenAnimationBuilder(
-//   child: Widget,
-//   tween: Tween<double>(begin: 0, end: 1),
-//   duration: Duration(milliseconds: 1000),
-//   curve: Curves.bounceIn,
-//   builder: (BuildContext context, double _val, Widget child) {
-//     return Opacity(
-//       opacity: _val,
-//       child: Padding(
-//         padding: EdgeInsets.only(top: _val * 50),
-//         child: child
-//       ),
-//     );
-//   },
-// );
 
 class _FadedTransitionRoute extends PageRouteBuilder {
   final Widget widget;

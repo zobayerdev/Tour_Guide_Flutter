@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final class IconHolder extends StatelessWidget {
   final Color bgColor;
@@ -24,9 +23,9 @@ final class IconHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height!.sp,
-      width: width!.sp,
-      decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.all(Radius.circular(8.r))),
+      height: height!,
+      width: width!,
+      decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.all(Radius.circular(8),),),
       child: Icon(
         icon,
         size: size,
