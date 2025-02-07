@@ -5,6 +5,7 @@ import 'package:boylar_plate/features/auth_screen/new_pass_screen/presentation/n
 import 'package:boylar_plate/features/auth_screen/otp_screen/presentation/otp_screen.dart';
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/presentation/sign_in_screen.dart';
 import 'package:boylar_plate/features/auth_screen/sign_up_screen/presentation/sign_up_screen.dart';
+import 'package:boylar_plate/features/home_screen/presentation/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 final class Routes {
@@ -18,6 +19,9 @@ final class Routes {
   static const String forgotPassScreen = '/forget_password_screen';
   static const String createNewPassScreen = '/create-new_password_screen';
   static const String userOTPScreen = '/user_otp_screen';
+
+  // ################## Home User #####################
+  static const String homeScreen = '/home_screen';
 }
 
 final class RouteGenerator {
@@ -53,6 +57,11 @@ final class RouteGenerator {
         return Platform.isAndroid
             ? _FadedTransitionRoute(widget: UserOTPScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => UserOTPScreen());
+
+      case Routes.homeScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: HomeScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => HomeScreen());
 
       default:
         return null;

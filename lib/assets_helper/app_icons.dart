@@ -22,4 +22,5 @@ class AppIcons {
   static const String profileSvg = '$iconsRoute/profile.svg';
   static const String savedGrey = '$iconsRoute/saved_grey.svg';
   static const String leftArrow = '$iconsRoute/left_arrow.svg';
+  static const String food = '$iconsRoute/food.svg';
 }

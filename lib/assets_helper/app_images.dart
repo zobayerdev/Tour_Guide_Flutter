@@ -15,5 +15,10 @@ class AppImages {
   static const String lock = '$imageRoute/lock.png';
   static const String nature = '$imageRoute/nature.png';
   static const String popular = '$imageRoute/popular.png';
+  static const String main = '$imageRoute/main.png';
   static const String verification_image = '$imageRoute/verification_image.png';
+
+  static const String image1 = '$imageRoute/image1.png';
+  static const String image2 = '$imageRoute/image2.png';
+  static const String fimg1 = '$imageRoute/fimg1.png';
 }
