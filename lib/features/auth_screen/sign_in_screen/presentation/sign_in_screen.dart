@@ -77,6 +77,25 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     hintTextColor: AppColors.c6B7280,
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          NavigationService.navigateTo(Routes.forgotPassScreen);
+                        },
+                        child: Text(
+                          "Forget Password",
+                          style: TextFontStyle.textStyle14w500Poppins.copyWith(
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 20,
                   ),

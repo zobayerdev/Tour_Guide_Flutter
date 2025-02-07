@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:boylar_plate/features/auth_screen/forget_pass_screen/presentation/forget_pass_screen.dart';
+import 'package:boylar_plate/features/auth_screen/new_pass_screen/presentation/new_pass_screen.dart';
+import 'package:boylar_plate/features/auth_screen/otp_screen/presentation/otp_screen.dart';
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/presentation/sign_in_screen.dart';
 import 'package:boylar_plate/features/auth_screen/sign_up_screen/presentation/sign_up_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +15,9 @@ final class Routes {
   // ################## Auth User #####################
   static const String signInScreen = '/sign_in_screen';
   static const String signUpScreen = '/sign_up_screen';
+  static const String forgotPassScreen = '/forget_password_screen';
+  static const String createNewPassScreen = '/create-new_password_screen';
+  static const String userOTPScreen = '/user_otp_screen';
 }
 
 final class RouteGenerator {
@@ -30,6 +36,23 @@ final class RouteGenerator {
         return Platform.isAndroid
             ? _FadedTransitionRoute(widget: SignUpScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => SignUpScreen());
+
+      case Routes.forgotPassScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: ForgetPassScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => ForgetPassScreen());
+
+      case Routes.createNewPassScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: CreateNewPassScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => CreateNewPassScreen());
+
+      case Routes.userOTPScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: UserOTPScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => UserOTPScreen());
 
       default:
         return null;

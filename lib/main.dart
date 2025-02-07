@@ -7,7 +7,6 @@ import 'helpers/all_routes.dart';
 import 'helpers/di.dart';
 import 'helpers/helper_methods.dart';
 import 'helpers/navigation_service.dart';
-//import 'loading_screen.dart';
 import 'networks/dio/dio.dart';
 
 void main() async {

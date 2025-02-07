@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   NavigationService.goBack;
                 },
                 child: SvgPicture.asset(
-                  AppIcons.arrowPrevious,
+                  AppIcons.leftArrow,
                   height: 28,
                   width: 28,
                 ),
