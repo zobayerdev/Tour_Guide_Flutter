@@ -7,6 +7,7 @@ class AppColors {
   static const Color yellowColor = Color(0xFFFACC15);
   static const Color off_blue_color = Color(0xFFEFF6FF);
   static const Color snow_blue_color = Color(0xFFEFF6FF);
+  static const Color cA0A0A0 = Color(0xFFA0A0A0);
 
   static const Color cDBEAFE = Color(0xFFDBEAFE);
   static const Color c6B7280 = Color(0xFF6B7280);

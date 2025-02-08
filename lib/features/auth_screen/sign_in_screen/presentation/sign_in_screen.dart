@@ -102,7 +102,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   customButton(
                     name: 'Sign In',
                     onCallBack: () {
-                      NavigationService.navigateTo(Routes.homeScreen);
+                      NavigationService.navigateTo(Routes.navigationScreen);
                     },
                     context: context,
                     color: AppColors.primaryColor,
