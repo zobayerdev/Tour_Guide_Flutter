@@ -18,7 +18,16 @@ class AppImages {
   static const String main = '$imageRoute/main.png';
   static const String verification_image = '$imageRoute/verification_image.png';
 
+  //home Screen
   static const String image1 = '$imageRoute/image1.png';
   static const String image2 = '$imageRoute/image2.png';
   static const String fimg1 = '$imageRoute/fimg1.png';
+
+  // exolore screen
+  static const String pimage1 = '$imageRoute/pimage1.png';
+  static const String pimage2 = '$imageRoute/pimage2.png';
+  static const String pimage3 = '$imageRoute/pimage3.png';
+  static const String pimage4 = '$imageRoute/pimage4.png';
+  static const String pimage5 = '$imageRoute/pimage5.png';
+  static const String pimage6 = '$imageRoute/pimage6.png';
 }
