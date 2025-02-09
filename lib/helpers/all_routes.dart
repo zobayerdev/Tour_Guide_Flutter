@@ -6,6 +6,8 @@ import 'package:boylar_plate/features/auth_screen/otp_screen/presentation/otp_sc
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/presentation/sign_in_screen.dart';
 import 'package:boylar_plate/features/auth_screen/sign_up_screen/presentation/sign_up_screen.dart';
 import 'package:boylar_plate/features/home_screen/presentation/home_screen.dart';
+import 'package:boylar_plate/features/profile_screen/presentation/edit_profile_screen.dart';
+import 'package:boylar_plate/features/profile_screen/presentation/profile_screen.dart';
 import 'package:boylar_plate/navigation_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -26,6 +28,10 @@ final class Routes {
 
   // ################## Home User #############################
   static const String homeScreen = '/home_screen';
+
+  // ################## Profile User #############################
+  static const String profileScreen = '/profile_screen';
+  static const String editProfileScreen = '/edit_profile_screen';
 }
 
 final class RouteGenerator {
@@ -72,6 +78,17 @@ final class RouteGenerator {
             ? _FadedTransitionRoute(
                 widget: NavigationScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => NavigationScreen());
+
+      case Routes.profileScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: ProfileScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => ProfileScreen());
+
+      case Routes.editProfileScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: EditProfileScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => EditProfileScreen());
 
       default:
         return null;

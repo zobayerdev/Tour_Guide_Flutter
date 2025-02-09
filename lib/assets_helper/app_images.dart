@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class AppImages {
   /*assets route*/
   static const String imageRoute = 'assets/images';
@@ -17,6 +19,7 @@ class AppImages {
   static const String popular = '$imageRoute/popular.png';
   static const String main = '$imageRoute/main.png';
   static const String verification_image = '$imageRoute/verification_image.png';
+  static const String profile = '$imageRoute/profile.png';
 
   //home Screen
   static const String image1 = '$imageRoute/image1.png';

@@ -10,8 +10,9 @@ class ReusableFormField extends StatelessWidget {
   final Widget? suffixIcon; // For suffix icon
   final Color? borderColor; // For border color
   final double? borderWidth; // For border width
-  final Color? hintTextColor; // For hint text color
-  final double? iconSize; // For setting the size of the icons
+  final Color? hintTextColor;
+  final Color? fieldColor; // For hint text color
+  final double? iconSize;
 
   const ReusableFormField({
     super.key,
@@ -23,7 +24,8 @@ class ReusableFormField extends StatelessWidget {
     this.borderColor,
     this.borderWidth,
     this.hintTextColor,
-    this.iconSize, // Accept icon size as a parameter
+    this.iconSize,
+    this.fieldColor,
   });
 
   @override
@@ -35,7 +37,7 @@ class ReusableFormField extends StatelessWidget {
           minLines: minLine ?? 1,
           maxLines: null,
           decoration: InputDecoration(
-            fillColor: AppColors.cFFFFFF,
+            fillColor: fieldColor ?? AppColors.cFFFFFF,
             filled: true,
             hintText: hintText,
             hintStyle: TextFontStyle.textStyle14w400Poppins
