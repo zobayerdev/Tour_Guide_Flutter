@@ -32,8 +32,8 @@ class _NavigationScreenState extends State<NavigationScreen> {
   final List<StatefulWidget> _screens = [
     HomeScreen(),
     ExploreScreen(),
+    SavedScreen(),
     ProfileScreen(),
-    SavedScreen()
   ];
 
   @override
