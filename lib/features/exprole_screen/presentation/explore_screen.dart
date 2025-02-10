@@ -5,6 +5,8 @@ import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:boylar_plate/common_widgets/common_searchbar.dart';
+import 'package:boylar_plate/helpers/all_routes.dart';
+import 'package:boylar_plate/helpers/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -48,8 +50,14 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   'Explore',
                   style: TextFontStyle.headLine30w800Poppins,
                 ),
+                const SizedBox(height: 5),
+                Text(
+                  'Discover the world\'s best destinations',
+                  style: TextFontStyle.textStyle18w500Poppins.copyWith(
+                    color: AppColors.c444444,
+                  ),
+                ),
                 const SizedBox(height: 20),
-
                 // Search Bar
                 CommonSearchBar(),
                 const SizedBox(height: 20),
@@ -76,78 +84,84 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   itemBuilder: (context, index) {
                     final destination = _popularDestinations[index];
 
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 8,
-                            offset: const Offset(2, 2),
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Container(
-                          color: Colors.white,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Destination Image
-                              Image.asset(
-                                destination['image']!,
-                                width: double.infinity,
-                                height: 120,
-                                fit: BoxFit.cover,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Destination Name
-                                    Text(
-                                      destination['name']!,
-                                      style:
-                                          TextFontStyle.textStyle18w500Poppins,
-                                    ),
-                                    const SizedBox(height: 5),
-                                    // Location & Price
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          destination['name']!.split(
-                                              ',')[1], // Extracts country
-                                          style: TextFontStyle
-                                              .textStyle14w600Poppins
-                                              .copyWith(
-                                            color: AppColors.blackColor,
-                                          ),
-                                        ),
-                                        Text(
-                                          destination['price']!,
-                                          style: TextFontStyle
-                                              .textStyle14w600Poppins
-                                              .copyWith(
-                                            color: AppColors.primaryColor,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                    return GestureDetector(
+                      onTap: () {
+                        NavigationService.navigateTo(Routes.detailsScreen);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 8,
+                              offset: const Offset(2, 2),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Container(
+                            color: Colors.white,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Destination Image
+                                Image.asset(
+                                  destination['image']!,
+                                  width: double.infinity,
+                                  height: 120,
+                                  fit: BoxFit.cover,
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Destination Name
+                                      Text(
+                                        destination['name']!,
+                                        style: TextFontStyle
+                                            .textStyle18w500Poppins,
+                                      ),
+                                      const SizedBox(height: 5),
+                                      // Location & Price
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            destination['name']!.split(
+                                                ',')[1], // Extracts country
+                                            style: TextFontStyle
+                                                .textStyle14w600Poppins
+                                                .copyWith(
+                                              color: AppColors.blackColor,
+                                            ),
+                                          ),
+                                          Text(
+                                            destination['price']!,
+                                            style: TextFontStyle
+                                                .textStyle14w600Poppins
+                                                .copyWith(
+                                              color: AppColors.primaryColor,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     );
                   },
                 ),
-                
+
                 const SizedBox(height: 20),
                 Row(
                   children: [

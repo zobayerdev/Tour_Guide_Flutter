@@ -5,7 +5,9 @@ import 'package:boylar_plate/features/auth_screen/new_pass_screen/presentation/n
 import 'package:boylar_plate/features/auth_screen/otp_screen/presentation/otp_screen.dart';
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/presentation/sign_in_screen.dart';
 import 'package:boylar_plate/features/auth_screen/sign_up_screen/presentation/sign_up_screen.dart';
+import 'package:boylar_plate/features/exprole_screen/presentation/details_screen.dart';
 import 'package:boylar_plate/features/home_screen/presentation/home_screen.dart';
+import 'package:boylar_plate/features/notification_screen/presentation/notification.dart';
 import 'package:boylar_plate/features/profile_screen/presentation/edit_profile_screen.dart';
 import 'package:boylar_plate/features/profile_screen/presentation/profile_screen.dart';
 import 'package:boylar_plate/navigation_screen.dart';
@@ -32,6 +34,13 @@ final class Routes {
   // ################## Profile User #############################
   static const String profileScreen = '/profile_screen';
   static const String editProfileScreen = '/edit_profile_screen';
+
+  // ################## Explore User #############################
+  static const String exploreScreen = '/explore_screen';
+  static const String detailsScreen = '/details_screen';
+
+  // ################## Notification User #############################
+  static const String notificationScreen = '/notification_screen';
 }
 
 final class RouteGenerator {
@@ -79,6 +88,11 @@ final class RouteGenerator {
                 widget: NavigationScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => NavigationScreen());
 
+      case Routes.detailsScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: DetailsScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => DetailsScreen());
+
       case Routes.profileScreen:
         return Platform.isAndroid
             ? _FadedTransitionRoute(widget: ProfileScreen(), settings: settings)
@@ -89,6 +103,12 @@ final class RouteGenerator {
             ? _FadedTransitionRoute(
                 widget: EditProfileScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => EditProfileScreen());
+
+      case Routes.notificationScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: NotificationScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => NotificationScreen());
 
       default:
         return null;

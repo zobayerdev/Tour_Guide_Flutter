@@ -33,4 +33,10 @@ class AppImages {
   static const String pimage4 = '$imageRoute/pimage4.png';
   static const String pimage5 = '$imageRoute/pimage5.png';
   static const String pimage6 = '$imageRoute/pimage6.png';
+
+  //details screen
+  static const String placeImg = '$imageRoute/place_details.png';
+  static const String mapImg = '$imageRoute/map.png';
+  static const String busImg = '$imageRoute/bus.png';
+  static const String shareImg = '$imageRoute/share.png';
 }

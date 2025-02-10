@@ -69,7 +69,7 @@ Widget customButton({
         color: color ?? AppColors.c6940C9,
         borderRadius: BorderRadius.circular(borderRadius ?? 12),
         border: Border.all(
-          color: borderColor ?? AppColors.c0A5B55,
+          color: borderColor ?? AppColors.primaryColor,
         ),
       ),
       child: Text(

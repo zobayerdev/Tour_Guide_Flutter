@@ -258,33 +258,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                SizedBox(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(15),
-                            child: SvgPicture.asset(
-                              AppIcons.notificationSvg,
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Notification',
-                                style: TextFontStyle.textStyle16w500Poppins,
+                GestureDetector(
+                  onTap: () {
+                    NavigationService.navigateTo(
+                      Routes.notificationScreen,
+                    );
+                  },
+                  child: SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(15),
+                              child: SvgPicture.asset(
+                                AppIcons.notificationSvg,
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SvgPicture.asset(
-                        AppIcons.arrowNext,
-                      ),
-                    ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Notification',
+                                  style: TextFontStyle.textStyle16w500Poppins,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SvgPicture.asset(
+                          AppIcons.arrowNext,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(

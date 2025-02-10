@@ -27,4 +27,6 @@ class AppIcons {
   static const String filterSvg = '$iconsRoute/filter_svg.svg';
   static const String settingSvg = '$iconsRoute/setting.svg';
   static const String language = '$iconsRoute/language.svg';
+  static const String bus = '$iconsRoute/bus_svg.svg';
+  static const String share = '$iconsRoute/shares.svg';
 }
