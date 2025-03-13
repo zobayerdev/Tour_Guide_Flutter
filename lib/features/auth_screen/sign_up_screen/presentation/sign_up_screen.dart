@@ -1,13 +1,13 @@
+import 'package:boylar_plate/common_widgets/custom_field.dart';
+import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:flutter/material.dart';
 import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
-import 'package:boylar_plate/common_widgets/custom_text_field.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
 import 'package:boylar_plate/helpers/navigation_service.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -17,6 +17,15 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  bool _isObscure = true;
+  bool _isCObscure = true;
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,36 +59,83 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ReusableFormField(
-                    hintText: 'Enter Full Name',
-                    hintTextColor: AppColors.c6B7280,
+                  CustomTextFormField(
+                    isPrefixIcon: true,
+                    isBorder: true,
+                    fillColor: AppColors.cFBFBFB,
+                    hintText: 'Full Name',
+                    iconpath: AppIcons.profileGrey,
+                    controller: _fullNameController,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  ReusableFormField(
-                    hintText: 'Enter your Email',
-                    hintTextColor: AppColors.c6B7280,
+                  CustomTextFormField(
+                    isPrefixIcon: true,
+                    isBorder: true,
+                    fillColor: AppColors.cFBFBFB,
+                    hintText: 'Email',
+                    iconpath: AppIcons.emailSvg,
+                    controller: _emailController,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  ReusableFormField(
-                    hintText: 'Create Password',
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: SvgPicture.asset(
-                        AppIcons.eyeSvg,
-                      ),
-                    ),
-                    hintTextColor: AppColors.c6B7280,
+                  CustomTextFormField(
+                    obscureText: _isObscure,
+                    isPrefixIcon: true,
+                    isBorder: true,
+                    fillColor: AppColors.cFBFBFB,
+                    suffixIcon:
+                        _isObscure ? Icons.visibility_off : Icons.visibility,
+                    onSuffixIconTap: () {
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    },
+                    hintText: 'Password',
+                    iconpath: AppIcons.lockSvg,
+                    controller: _passwordController,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextFormField(
+                    obscureText: _isCObscure,
+                    isPrefixIcon: true,
+                    isBorder: true,
+                    fillColor: AppColors.cFBFBFB,
+                    suffixIcon:
+                        _isCObscure ? Icons.visibility_off : Icons.visibility,
+                    onSuffixIconTap: () {
+                      setState(() {
+                        _isCObscure = !_isCObscure;
+                      });
+                    },
+                    hintText: 'Confirm Password',
+                    iconpath: AppIcons.lockSvg,
+                    controller: _confirmPasswordController,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   customButton(
                     name: 'Sign Up',
-                    onCallBack: () {},
+                    onCallBack: () async {
+                      await postSignUpRX.signup(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        password_confirmation: _passwordController.text,
+                        username: _fullNameController.text,
+                      );
+                      NavigationService.navigateToWithArgs(
+                        Routes.userOTPScreen,
+                        {
+                          'email': _emailController.text,
+                          'action': "email_verification"
+                        },
+                      );
+                    },
                     context: context,
                     color: AppColors.primaryColor,
                   ),

@@ -59,7 +59,7 @@ Widget customButton({
   elevation,
 }) {
   return GestureDetector(
-    onTap: onCallBack ?? () {}, // Provide a fallback if null
+    onTap: onCallBack, // Provide a fallback if null
     child: Container(
       height: height ?? 62,
       width: minWidth ?? double.infinity,

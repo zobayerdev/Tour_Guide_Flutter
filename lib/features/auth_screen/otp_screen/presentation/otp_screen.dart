@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
@@ -9,13 +11,25 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class UserOTPScreen extends StatefulWidget {
-  const UserOTPScreen({super.key});
+  final String email, action;
+  const UserOTPScreen({
+    super.key,
+    required this.email,
+    required this.action,
+  });
 
   @override
   State<UserOTPScreen> createState() => _UserOTPScreenState();
 }
 
 class _UserOTPScreenState extends State<UserOTPScreen> {
+  @override
+  void initState() {
+    super.initState();
+    log(widget.email);
+    log(widget.action);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +65,7 @@ class _UserOTPScreenState extends State<UserOTPScreen> {
                     style: TextFontStyle.textStyle14w500Poppins,
                   ),
                   Text(
-                    'user@gmail.com',
+                    widget.email,
                     style: TextFontStyle.textStyle14w700Poppins,
                   ),
                   SizedBox(
