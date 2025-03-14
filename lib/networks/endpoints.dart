@@ -16,6 +16,16 @@ final class NetworkConstants {
 
 final class Endpoints {
   Endpoints._();
-  //backend_url
+
+  //post API
   static String signUp() => "/api/register";
+  static String login() => "/api/login";
+  static String resendOTP() => "/api/resend-otp";
+  static String otpVerify() => "/api/verify-otp-password";
+  static String forgetPass() => "/api/forget-password";
+  static String resetPass() => "/api/reset-password";
+  static String logout() => "/api/logout";
+
+  // Get API
+  static String getProfileInfo() => "/api/me";
 }

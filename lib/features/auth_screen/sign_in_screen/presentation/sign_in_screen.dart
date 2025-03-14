@@ -3,11 +3,11 @@ import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
-import 'package:boylar_plate/common_widgets/custom_text_field.dart';
+import 'package:boylar_plate/common_widgets/custom_field.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
 import 'package:boylar_plate/helpers/navigation_service.dart';
+import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -17,6 +17,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  bool _isObscure = true;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,34 +52,32 @@ class _SignInScreenState extends State<SignInScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ReusableFormField(
+                  CustomTextFormField(
+                    isPrefixIcon: true,
+                    isBorder: true,
+                    fillColor: AppColors.cFBFBFB,
                     hintText: 'Email',
-                    hintTextColor: AppColors.c6B7280,
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(
-                        AppIcons.emailSvg,
-                      ),
-                    ),
+                    iconpath: AppIcons.emailSvg,
+                    controller: _emailController,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  ReusableFormField(
+                  CustomTextFormField(
+                    obscureText: _isObscure,
+                    isPrefixIcon: true,
+                    isBorder: true,
+                    fillColor: AppColors.cFBFBFB,
+                    suffixIcon:
+                        _isObscure ? Icons.visibility_off : Icons.visibility,
+                    onSuffixIconTap: () {
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    },
                     hintText: 'Password',
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(
-                        AppIcons.lockSvg,
-                      ),
-                    ),
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: SvgPicture.asset(
-                        AppIcons.eyeSvg,
-                      ),
-                    ),
-                    hintTextColor: AppColors.c6B7280,
+                    iconpath: AppIcons.lockSvg,
+                    controller: _passwordController,
                   ),
                   SizedBox(
                     height: 10,
@@ -101,7 +103,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   customButton(
                     name: 'Sign In',
-                    onCallBack: () {
+                    onCallBack: () async {
+                      await postLoginRx.signIn(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                      );
+
                       NavigationService.navigateTo(Routes.navigationScreen);
                     },
                     context: context,

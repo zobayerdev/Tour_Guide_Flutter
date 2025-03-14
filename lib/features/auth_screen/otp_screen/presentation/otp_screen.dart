@@ -7,6 +7,7 @@ import 'package:boylar_plate/common_widgets/custom_button.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
 import 'package:boylar_plate/helpers/navigation_service.dart';
 import 'package:boylar_plate/helpers/toast.dart';
+import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -23,15 +24,12 @@ class UserOTPScreen extends StatefulWidget {
 }
 
 class _UserOTPScreenState extends State<UserOTPScreen> {
-  @override
-  void initState() {
-    super.initState();
-    log(widget.email);
-    log(widget.action);
-  }
+  TextEditingController otpController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    log(widget.email);
+    log(widget.action);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -73,8 +71,8 @@ class _UserOTPScreenState extends State<UserOTPScreen> {
                   ),
                   PinCodeTextField(
                     length: 4,
-                    obscureText: false,
                     animationType: AnimationType.fade,
+                    controller: otpController,
                     pinTheme: PinTheme(
                       shape: PinCodeFieldShape.box,
                       borderRadius: BorderRadius.circular(12),
@@ -93,9 +91,6 @@ class _UserOTPScreenState extends State<UserOTPScreen> {
                     ),
                     animationDuration: const Duration(milliseconds: 300),
                     enableActiveFill: true,
-                    //controller: otpController,
-                    onCompleted: (v) {},
-                    onChanged: (value) {},
                     appContext: context,
                   ),
                   SizedBox(
@@ -110,8 +105,18 @@ class _UserOTPScreenState extends State<UserOTPScreen> {
                   ),
                   customButton(
                     name: 'Verify',
-                    onCallBack: () {
+                    onCallBack: () async {
+                      await postOTPRx.otpVerifyApi(
+                        otp: int.parse(otpController.text),
+                        email: widget.email,
+                        action: widget.action,
+                      );
+
                       NavigationService.navigateTo(Routes.signInScreen);
+
+                      log(widget.email);
+                      log(widget.action);
+                      log(otpController.text); // Print OTP value
                     },
                     context: context,
                     color: AppColors.primaryColor,

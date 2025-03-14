@@ -1,4 +1,5 @@
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/presentation/sign_in_screen.dart';
+import 'package:boylar_plate/navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'constants/app_constants.dart';
 
@@ -35,9 +36,11 @@ class _LoadingState extends State<Loading> {
     } else {
       //  NotificationService().cancelAllNotifications();
     }
-    setState(() {
-      _isLoading = false;
-    });
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 
   @override
@@ -45,17 +48,11 @@ class _LoadingState extends State<Loading> {
     if (_isLoading) {
       return const WelcomeScreen();
     } else {
-      return appData.read(kKeyIsLoggedIn)
-          ? WelcomeScreen()
-          : appData.read(kKeyfirstTime)
-              ? SignInScreen() //AuthRuleScreen()
-              : WelcomeScreen();
+      return appData.read(kKeyfirstTime)
+          ? SignInScreen()
+          : appData.read(kKeyIsLoggedIn)
+              ? NavigationScreen()
+              : SignInScreen();
     }
-    /* return TimeAppointmentScreen();
-
-              ? HomeScreen()
-              : HomeScreen();
-    }
-    */
   }
 }

@@ -72,6 +72,9 @@ const String kKeyproductID = 'productId';
 const String kKeyShopSlug = 'shop_slug';
 const String kKeyRestaurantID = 'productId';
 const String kKeyIsExploring = 'exploring';
+
+const String kKeyIsFirstTime = "isFirsttime";
+
 //order statuses
 
 const List<String> kLanguagesKey = [
