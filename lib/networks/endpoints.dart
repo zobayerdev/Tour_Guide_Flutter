@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 const String url = "https://tourguide.zobayerdev.top";
+const String imageUrls = "$url/";
 
 final class NetworkConstants {
   NetworkConstants._();
@@ -28,4 +29,5 @@ final class Endpoints {
 
   // Get API
   static String getProfileInfo() => "/api/me";
+  static String getCategory() => "/api/category-show";
 }

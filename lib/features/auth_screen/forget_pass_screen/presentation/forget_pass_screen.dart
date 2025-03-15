@@ -4,11 +4,11 @@ import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:boylar_plate/common_widgets/custom_appbar.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
-import 'package:boylar_plate/common_widgets/custom_text_field.dart';
+import 'package:boylar_plate/common_widgets/custom_field.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
 import 'package:boylar_plate/helpers/navigation_service.dart';
+import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ForgetPassScreen extends StatefulWidget {
   const ForgetPassScreen({super.key});
@@ -18,6 +18,8 @@ class ForgetPassScreen extends StatefulWidget {
 }
 
 class _ForgetPassScreenState extends State<ForgetPassScreen> {
+  final TextEditingController _emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,26 +68,30 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                ReusableFormField(
-                  hintText: 'Enter your email',
-                  hintTextColor: AppColors.c6B7280,
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset(
-                      AppIcons.emailSvg,
-                    ),
-                  ),
+                CustomTextFormField(
+                  isPrefixIcon: true,
+                  isBorder: true,
+                  fillColor: AppColors.cFBFBFB,
+                  hintText: 'Email',
+                  iconpath: AppIcons.emailSvg,
+                  controller: _emailController,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 customButton(
-                  name: 'Send reset link',
-                  onCallBack: () {
-                    NavigationService.navigateTo(Routes.userOTPScreen);
+                  name: 'Send OTP',
+                  onCallBack: () async {
+                    await forgetPassApiRx.forgetPassRx(
+                      email: _emailController.text,
+                    );
+                    NavigationService.navigateToWithArgs(Routes.userOTPScreen, {
+                      'email': _emailController.text,
+                      'action': 'forget_password',
+                    });
                   },
                   context: context,
                   color: AppColors.primaryColor,

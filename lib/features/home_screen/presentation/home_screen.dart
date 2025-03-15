@@ -1,12 +1,13 @@
 import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/assets_helper/app_fonts.dart';
-import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:boylar_plate/common_widgets/common_searchbar.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
+import 'package:boylar_plate/features/home_screen/model/category_model/category_model.dart';
 import 'package:boylar_plate/features/home_screen/widgets/destination_card.dart';
+import 'package:boylar_plate/networks/api_acess.dart';
+import 'package:boylar_plate/networks/endpoints.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getCategoryAPIRX.getCategoryRX();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,70 +91,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Image.asset(
-                              AppImages.adventure,
-                              width: 50,
-                              height: 50,
+                    StreamBuilder<CategoryModel>(
+                      stream: getCategoryAPIRX.dataFetcher,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          CategoryModel categoryModel = snapshot.data!;
+                          var data = categoryModel.data;
+                          return SizedBox(
+                            height:
+                                100, // Set the height of the row for better visual appearance
+                            child: ListView.builder(
+                              itemCount: data!.length,
+                              scrollDirection: Axis
+                                  .horizontal, // Set scrollDirection to horizontal
+                              shrinkWrap: true,
+                              physics: BouncingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 20.0), // Space between items
+                                  child: categoryWidgets(
+                                    title: data[index].title!,
+                                    image: imageUrls + data[index].image!,
+                                  ),
+                                );
+                              },
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Adventure',
-                              style: TextFontStyle.textStyle14w400Poppins,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              AppImages.culture,
-                              width: 50,
-                              height: 50,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Culture',
-                              style: TextFontStyle.textStyle14w400Poppins,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              AppImages.nature,
-                              width: 50,
-                              height: 50,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Nature',
-                              style: TextFontStyle.textStyle14w400Poppins,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            SvgPicture.asset(AppIcons.food),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Food',
-                              style: TextFontStyle.textStyle14w400Poppins,
-                            ),
-                          ],
-                        ),
-                      ],
+                          );
+                        } else {
+                          return Center(child: CircularProgressIndicator());
+                        }
+                      },
                     ),
                     SizedBox(
                       height: 20,
@@ -227,7 +201,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-                    
                     SizedBox(
                       height: 20,
                     ),
@@ -360,7 +333,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-                  
                   ],
                 ),
               ],
@@ -368,6 +340,40 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class categoryWidgets extends StatelessWidget {
+  final String title;
+  final String image;
+
+  const categoryWidgets({
+    super.key,
+    required this.title,
+    required this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ClipOval(
+          child: Image.network(
+            image,
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          title,
+          style: TextFontStyle.textStyle14w400Poppins,
+        ),
+      ],
     );
   }
 }
