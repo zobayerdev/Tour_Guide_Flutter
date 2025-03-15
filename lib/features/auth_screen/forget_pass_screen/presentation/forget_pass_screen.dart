@@ -90,7 +90,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                     );
                     NavigationService.navigateToWithArgs(Routes.userOTPScreen, {
                       'email': _emailController.text,
-                      'action': 'forget_password',
+                      'action': 'forgot_password',
                     });
                   },
                   context: context,

@@ -16,14 +16,10 @@ final class PostForgetApi {
       Map<String, dynamic> data = {
         "email": email,
       };
-      // FormData data = FormData.fromMap({
-      //   "email": email,
-      // });
       Response response = await postHttp(Endpoints.forgetPass(), data);
 
       if (response.statusCode == 200) {
         final data = json.decode(json.encode(response.data));
-        //ToastUtil.showShortToast("OTP send Successfully");
         return data;
       } else {
         throw DataSource.DEFAULT.getFailure();

@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';

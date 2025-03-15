@@ -111,8 +111,17 @@ class _UserOTPScreenState extends State<UserOTPScreen> {
                         email: widget.email,
                         action: widget.action,
                       );
-
-                      NavigationService.navigateTo(Routes.signInScreen);
+                      if (widget.action == 'email_verification') {
+                        NavigationService.navigateTo(Routes.signInScreen);
+                      } else {
+                        NavigationService.navigateToWithArgs(
+                          Routes.createNewPassScreen,
+                          {
+                            'email': widget.email,
+                            'otp': otpController.text,
+                          },
+                        );
+                      }
 
                       log(widget.email);
                       log(widget.action);

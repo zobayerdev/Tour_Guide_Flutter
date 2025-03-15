@@ -1,4 +1,5 @@
 import 'package:boylar_plate/features/auth_screen/forget_pass_screen/forgetpass_rx_data/forget_pass_rx.dart';
+import 'package:boylar_plate/features/auth_screen/new_pass_screen/newpass_rx_data/new_pass_rx.dart';
 import 'package:boylar_plate/features/auth_screen/otp_screen/otp_rx_data/otp_rx.dart';
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/model/signin_response.dart';
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/signin_rx_data/sign_in_rx.dart';
@@ -23,6 +24,11 @@ SignInApiRx postLoginRx = SignInApiRx(
 );
 
 ForgetPassApiRx forgetPassApiRx = ForgetPassApiRx(
+  empty: <String, dynamic>{},
+  dataFetcher: BehaviorSubject<Map<String, dynamic>>(), // Specify the type here
+);
+
+ResetPassApiRx resetPassApiRx = ResetPassApiRx(
   empty: <String, dynamic>{},
   dataFetcher: BehaviorSubject<Map<String, dynamic>>(), // Specify the type here
 );
