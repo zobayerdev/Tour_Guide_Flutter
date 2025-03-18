@@ -29,5 +29,6 @@ final class Endpoints {
 
   // Get API
   static String getProfileInfo() => "/api/me";
+  static String getProfileImage() => "/api/show-image";
   static String getCategory() => "/api/category-show";
 }

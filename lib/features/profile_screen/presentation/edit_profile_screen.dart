@@ -7,7 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+  final String name, gender, phone, bio;
+  const EditProfileScreen({
+    super.key,
+    required this.name,
+    required this.gender,
+    required this.phone,
+    required this.bio,
+  });
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -101,7 +108,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ],
                 ),
                 ReusableFormField(
-                  hintText: 'Md. Zobayer Hasan Nayem',
+                  hintText: widget.name,
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
                 ),
@@ -111,13 +118,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Row(
                   children: [
                     Text(
-                      'Username',
+                      'Gender',
                       style: TextFontStyle.textStyle14w500Poppins,
                     ),
                   ],
                 ),
                 ReusableFormField(
-                  hintText: 'Zobayer',
+                  hintText: widget.gender,
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
                 ),
@@ -133,7 +140,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ],
                 ),
                 ReusableFormField(
-                  hintText: '+88 01615257555',
+                  hintText: widget.phone,
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
                 ),
@@ -143,13 +150,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Row(
                   children: [
                     Text(
-                      'Email',
+                      'Bio',
                       style: TextFontStyle.textStyle14w500Poppins,
                     ),
                   ],
                 ),
                 ReusableFormField(
-                  hintText: 'zobayer.dev@gmail.com',
+                  hintText: widget.bio,
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
                 ),

@@ -120,10 +120,23 @@ final class RouteGenerator {
             : CupertinoPageRoute(builder: (context) => ProfileScreen());
 
       case Routes.editProfileScreen:
+        final Map profileData = settings.arguments as Map;
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: EditProfileScreen(), settings: settings)
-            : CupertinoPageRoute(builder: (context) => EditProfileScreen());
+                widget: EditProfileScreen(
+                  name: profileData['name'],
+                  gender: profileData['gender'],
+                  phone: profileData['phone'],
+                  bio: profileData['bio'],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => EditProfileScreen(
+                      name: profileData['name'],
+                      gender: profileData['gender'],
+                      phone: profileData['phone'],
+                      bio: profileData['bio'],
+                    ));
 
       case Routes.notificationScreen:
         return Platform.isAndroid
