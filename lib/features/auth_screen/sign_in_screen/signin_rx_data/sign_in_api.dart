@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:boylar_plate/features/auth_screen/sign_in_screen/model/signin_response.dart';
 import 'package:boylar_plate/helpers/toast.dart';
 import 'package:boylar_plate/networks/dio/dio.dart';
@@ -13,8 +14,10 @@ final class SignInApi {
 
   static SignInApi get instance => _singleton;
 
-  Future<SignInResponse> signInApi(
-      {required String email, required dynamic password}) async {
+  Future<SignInResponse> signInApi({
+    required String email,
+    required dynamic password,
+  }) async {
     try {
       // Create the request data map
       Map data = {
@@ -33,7 +36,7 @@ final class SignInApi {
         throw DataSource.DEFAULT.getFailure();
       }
     } catch (error) {
-      print("Error during signup: $error");
+      log("Error during signin: $error");
       rethrow;
     }
   }

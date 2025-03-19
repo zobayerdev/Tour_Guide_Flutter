@@ -8,6 +8,7 @@ import 'package:boylar_plate/features/home_screen/home_rx_data/category_rx.dart'
 import 'package:boylar_plate/features/home_screen/model/category_model/category_model.dart';
 import 'package:boylar_plate/features/profile_screen/model/profile_image_model.dart';
 import 'package:boylar_plate/features/profile_screen/model/profile_model.dart';
+import 'package:boylar_plate/features/profile_screen/profile_rx_data/logout_rx.dart';
 import 'package:boylar_plate/features/profile_screen/profile_rx_data/profile_image_rx.dart';
 import 'package:boylar_plate/features/profile_screen/profile_rx_data/profile_rx.dart';
 import 'package:rxdart/rxdart.dart';
@@ -50,4 +51,10 @@ GetProfileApiRx getProfileApiRx = GetProfileApiRx(
 GetProfileImageApiRx getProfileImageApiRx = GetProfileImageApiRx(
   empty: ProfileImageModel(),
   dataFetcher: BehaviorSubject<ProfileImageModel>(), // Specify the type here
+);
+
+/*Logout user*/
+PostLogOutRX postLogOutRX = PostLogOutRX(
+  empty: <String, dynamic>{},
+  dataFetcher: BehaviorSubject<Map<String, dynamic>>(),
 );

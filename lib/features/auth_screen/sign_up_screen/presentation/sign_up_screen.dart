@@ -1,3 +1,4 @@
+import 'package:boylar_plate/assets_helper/app_lottie.dart';
 import 'package:boylar_plate/common_widgets/custom_field.dart';
 import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
 import 'package:boylar_plate/helpers/navigation_service.dart';
+import 'package:lottie/lottie.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -19,6 +21,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool _isObscure = true;
   bool _isCObscure = true;
+  bool isLoading = false;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -119,26 +122,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  customButton(
-                    name: 'Sign Up',
-                    onCallBack: () async {
-                      await postSignUpRX.signup(
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                        password_confirmation: _passwordController.text,
-                        username: _fullNameController.text,
-                      );
-                      NavigationService.navigateToWithArgs(
-                        Routes.userOTPScreen,
-                        {
-                          'email': _emailController.text,
-                          'action': "email_verification"
-                        },
-                      );
-                    },
-                    context: context,
-                    color: AppColors.primaryColor,
-                  ),
+                  isLoading
+                      ? Container(
+                          height: 62,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: AppColors.primaryColor,
+                              width: 2,
+                            ),
+                          ),
+                          child: Lottie.asset(
+                            AppLottie.loading,
+                            height: 100,
+                            width: 100,
+                          ),
+                        )
+                      : customButton(
+                          name: 'Sign Up',
+                          onCallBack: () async {
+                            setState(() {
+                              isLoading = true; // Start loading
+                            });
+                            await postSignUpRX.signup(
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                              password_confirmation: _passwordController.text,
+                              username: _fullNameController.text,
+                            );
+                            NavigationService.navigateToWithArgs(
+                              Routes.userOTPScreen,
+                              {
+                                'email': _emailController.text,
+                                'action': "email_verification"
+                              },
+                            );
+                          },
+                          context: context,
+                          color: AppColors.primaryColor,
+                        ),
                   const SizedBox(
                     height: 20,
                   ),

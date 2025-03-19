@@ -7,13 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  final String name, gender, phone, bio;
   const EditProfileScreen({
     super.key,
-    required this.name,
-    required this.gender,
-    required this.phone,
-    required this.bio,
   });
 
   @override
@@ -108,7 +103,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ],
                 ),
                 ReusableFormField(
-                  hintText: widget.name,
+                  hintText: "Enter your name",
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
                 ),
@@ -124,7 +119,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ],
                 ),
                 ReusableFormField(
-                  hintText: widget.gender,
+                  hintText: "Enter your gender",
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
                 ),
@@ -140,7 +135,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ],
                 ),
                 ReusableFormField(
-                  hintText: widget.phone,
+                  hintText: "Enter your mobile",
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
                 ),
@@ -156,9 +151,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ],
                 ),
                 ReusableFormField(
-                  hintText: widget.bio,
+                  hintText: "Enter your bio",
                   fieldColor: AppColors.c000000.withOpacity(0.02),
                   hintTextColor: AppColors.c000000,
+                  maxLine: 4,
                 ),
               ],
             ),

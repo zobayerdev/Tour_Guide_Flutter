@@ -2,12 +2,14 @@ import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
+import 'package:boylar_plate/assets_helper/app_lottie.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
 import 'package:boylar_plate/common_widgets/custom_field.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
 import 'package:boylar_plate/helpers/navigation_service.dart';
 import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -18,6 +20,7 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   bool _isObscure = true;
+  bool isLoading = false; // Track the loading state
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -101,19 +104,46 @@ class _SignInScreenState extends State<SignInScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  customButton(
-                    name: 'Sign In',
-                    onCallBack: () async {
-                      await postLoginRx.signIn(
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                      );
+                  isLoading // If the loading state is true, show loading
+                      ? Container(
+                          height: 62,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: AppColors.primaryColor,
+                              width: 2,
+                            ),
+                          ),
+                          child: Lottie.asset(
+                            AppLottie.loading,
+                            height: 100,
+                            width: 100,
+                          ),
+                        )
+                      : customButton(
+                          name: 'Sign In',
+                          onCallBack: () async {
+                            setState(() {
+                              isLoading = true; // Start loading
+                            });
 
-                      NavigationService.navigateTo(Routes.navigationScreen);
-                    },
-                    context: context,
-                    color: AppColors.primaryColor,
-                  ),
+                            await postLoginRx.signIn(
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            );
+
+                            setState(() {
+                              isLoading = false; // Stop loading
+                            });
+
+                            NavigationService.navigateTo(
+                                Routes.navigationScreen);
+                          },
+                          context: context,
+                          color: AppColors.primaryColor,
+                        ),
                   const SizedBox(
                     height: 20,
                   ),

@@ -3,12 +3,14 @@ import 'dart:developer';
 import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
+import 'package:boylar_plate/assets_helper/app_lottie.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
 import 'package:boylar_plate/helpers/navigation_service.dart';
 import 'package:boylar_plate/helpers/toast.dart';
 import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class UserOTPScreen extends StatefulWidget {
@@ -25,6 +27,7 @@ class UserOTPScreen extends StatefulWidget {
 
 class _UserOTPScreenState extends State<UserOTPScreen> {
   TextEditingController otpController = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -103,33 +106,53 @@ class _UserOTPScreenState extends State<UserOTPScreen> {
                   SizedBox(
                     height: 10,
                   ),
-                  customButton(
-                    name: 'Verify',
-                    onCallBack: () async {
-                      await postOTPRx.otpVerifyApi(
-                        otp: int.parse(otpController.text),
-                        email: widget.email,
-                        action: widget.action,
-                      );
-                      if (widget.action == 'email_verification') {
-                        NavigationService.navigateTo(Routes.signInScreen);
-                      } else {
-                        NavigationService.navigateToWithArgs(
-                          Routes.createNewPassScreen,
-                          {
-                            'email': widget.email,
-                            'otp': otpController.text,
-                          },
-                        );
-                      }
+                  isLoading
+                      ? Container(
+                          height: 62,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: AppColors.primaryColor,
+                              width: 2,
+                            ),
+                          ),
+                          child: Lottie.asset(
+                            AppLottie.loading,
+                            height: 100,
+                            width: 100,
+                          ),
+                        )
+                      : customButton(
+                          name: 'Verify',
+                          onCallBack: () async {
+                            setState(() {
+                              isLoading = true; // Start loading
+                            });
+                            await postOTPRx.otpVerifyApi(
+                              otp: int.parse(otpController.text),
+                              email: widget.email,
+                              action: widget.action,
+                            );
+                            if (widget.action == 'email_verification') {
+                              NavigationService.navigateTo(Routes.signInScreen);
+                            } else {
+                              NavigationService.navigateToWithArgs(
+                                Routes.createNewPassScreen,
+                                {
+                                  'email': widget.email,
+                                  'otp': otpController.text,
+                                },
+                              );
+                            }
 
-                      log(widget.email);
-                      log(widget.action);
-                      log(otpController.text); // Print OTP value
-                    },
-                    context: context,
-                    color: AppColors.primaryColor,
-                  ),
+                            log(widget.email);
+                            log(widget.action);
+                            log(otpController.text); // Print OTP value
+                          },
+                          context: context,
+                          color: AppColors.primaryColor,
+                        ),
                   SizedBox(
                     height: 20,
                   ),

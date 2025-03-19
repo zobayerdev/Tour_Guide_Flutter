@@ -3,6 +3,7 @@
 import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
+import 'package:boylar_plate/assets_helper/app_lottie.dart';
 import 'package:boylar_plate/common_widgets/common_searchbar.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
 import 'package:boylar_plate/features/home_screen/model/category_model/category_model.dart';
@@ -10,6 +11,7 @@ import 'package:boylar_plate/features/home_screen/widgets/destination_card.dart'
 import 'package:boylar_plate/networks/api_acess.dart';
 import 'package:boylar_plate/networks/endpoints.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -121,7 +123,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           );
                         } else {
-                          return Center(child: CircularProgressIndicator());
+                          return Center(
+                            child: Lottie.asset(
+                              AppLottie.loading,
+                              height: 100,
+                              width: 100,
+                            ),
+                          );
                         }
                       },
                     ),
