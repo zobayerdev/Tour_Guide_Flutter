@@ -143,8 +143,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       right: 1,
                                       child: GestureDetector(
                                         onTap: () {
-                                          NavigationService.navigateTo(
-                                              Routes.editProfileScreen);
+                                          NavigationService.navigateToWithArgs(
+                                              Routes.editProfileScreen, {
+                                            'name': info.name,
+                                            'phone': info.phone,
+                                            'bio': info.bio,
+                                            'gender': info.gender,
+                                          });
                                         },
                                         child: Container(
                                           padding: EdgeInsets.all(5),

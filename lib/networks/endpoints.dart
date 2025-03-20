@@ -26,6 +26,8 @@ final class Endpoints {
   static String forgetPass() => "/api/forget-password";
   static String resetPass() => "/api/reset-password";
   static String logout() => "/api/logout";
+  static String updateProfile() => "/api/user-update";
+  static String updateImage() => "/api/change-image";
 
   // Get API
   static String getProfileInfo() => "/api/me";

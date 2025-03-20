@@ -91,6 +91,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           filled: true,
           fillColor: widget.fillColor,
           labelText: widget.labelText,
+          labelStyle: TextFontStyle.textStyle14w400Poppins.copyWith(
+            color: AppColors.c919293,
+            fontSize: 14,
+            height: 22 / 14,
+            letterSpacing: 0.8,
+          ),
           hintText: widget.hintText,
           hintStyle: TextFontStyle.textStyle14w400Poppins.copyWith(
             color: AppColors.c919293,

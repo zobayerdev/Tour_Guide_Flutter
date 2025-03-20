@@ -16,6 +16,11 @@
 	<string>boylar_plate</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSCameraUsageDescription</key>
+<string>Your message about the camera permission</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Your message about the gallery permission</string>
+
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
