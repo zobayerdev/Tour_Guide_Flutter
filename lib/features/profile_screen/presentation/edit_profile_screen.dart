@@ -4,6 +4,7 @@ import 'package:boylar_plate/assets_helper/app_fonts.dart';
 import 'package:boylar_plate/assets_helper/app_icons.dart';
 import 'package:boylar_plate/assets_helper/app_images.dart';
 import 'package:boylar_plate/assets_helper/app_lottie.dart';
+import 'package:boylar_plate/common_widgets/custom_appbar.dart';
 import 'package:boylar_plate/common_widgets/custom_button.dart';
 import 'package:boylar_plate/common_widgets/custom_field.dart';
 import 'package:boylar_plate/helpers/all_routes.dart';
@@ -106,42 +107,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     final TextEditingController bioController = TextEditingController();
 
     return Scaffold(
+      appBar: CustomAppBar(
+        title: 'Edit Profile',
+        isCenterd: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(20),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Cancel',
-                        style: TextFontStyle.textStyle14w500Poppins,
-                      ),
-                    ),
-                    Text(
-                      'Edit Profile',
-                      style: TextFontStyle.textStyle16w500Poppins
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Done',
-                        style: TextFontStyle.textStyle14w500Poppins.copyWith(
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(
                   height: 20,
                 ),

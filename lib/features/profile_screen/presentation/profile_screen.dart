@@ -174,9 +174,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               info.name ?? 'N/A',
                               style: TextFontStyle.headLine22w700Poppins,
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Text(
                               info.bio ?? 'N/A',
-                              style: TextFontStyle.textStyle16w500Poppins,
+                              style:
+                                  TextFontStyle.textStyle12w500Poppins.copyWith(
+                                color: AppColors.blackColor,
+                              ),
+                              textAlign: TextAlign.justify,
                             ),
                             SizedBox(
                               height: 20,
@@ -202,22 +209,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   return Column(
                                     children: [
                                       _buildInfoContainer(
-                                          'Full Name', info?.name ?? 'N/A'),
+                                        'Full Name',
+                                        info?.name ?? 'N/A',
+                                        SvgPicture.asset(
+                                          AppIcons.profileSvg,
+                                        ),
+                                      ),
                                       SizedBox(
                                         height: 10,
                                       ),
                                       _buildInfoContainer(
-                                          'Email', info?.email ?? ''),
+                                        'Email',
+                                        info?.email ?? '',
+                                        SvgPicture.asset(
+                                          AppIcons.emailBlueIcon,
+                                        ),
+                                      ),
                                       SizedBox(
                                         height: 10,
                                       ),
                                       _buildInfoContainer(
-                                          'Mobile', info?.phone ?? 'N/A'),
+                                        'Mobile',
+                                        info?.phone ?? 'N/A',
+                                        SvgPicture.asset(
+                                          AppIcons.phoneSvg,
+                                        ),
+                                      ),
                                       SizedBox(
                                         height: 10,
                                       ),
                                       _buildInfoContainer(
-                                          'Gender', info?.gender ?? 'N/A'),
+                                        'Gender',
+                                        info?.gender ?? 'N/A',
+                                        SvgPicture.asset(
+                                          AppIcons.genderBlueIcon,
+                                        ),
+                                      ),
                                     ],
                                   );
                                 } else {
@@ -320,7 +347,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   // Helper method to build a personal info container
-  Widget _buildInfoContainer(String title, String value) {
+  Widget _buildInfoContainer(String title, String value, Widget? icons) {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.cEAE4E1.withOpacity(0.2),
@@ -330,9 +357,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Padding(
             padding: EdgeInsets.all(15),
-            child: SvgPicture.asset(
-              AppIcons.profileSvg,
-            ),
+            child: icons,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

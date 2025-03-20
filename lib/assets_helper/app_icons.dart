@@ -29,4 +29,9 @@ class AppIcons {
   static const String language = '$iconsRoute/language.svg';
   static const String bus = '$iconsRoute/bus_svg.svg';
   static const String share = '$iconsRoute/shares.svg';
+
+  // blue icons
+  static const String emailBlueIcon = '$iconsRoute/emailBlue.svg';
+  static const String mobileBlueIcon = '$iconsRoute/mobileBlue.svg';
+  static const String genderBlueIcon = '$iconsRoute/genderBlue.svg';
 }
