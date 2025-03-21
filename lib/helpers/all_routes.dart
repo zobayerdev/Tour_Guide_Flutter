@@ -8,6 +8,7 @@ import 'package:boylar_plate/features/auth_screen/sign_up_screen/presentation/si
 import 'package:boylar_plate/features/exprole_screen/presentation/details_screen.dart';
 import 'package:boylar_plate/features/home_screen/presentation/home_screen.dart';
 import 'package:boylar_plate/features/notification_screen/presentation/notification.dart';
+import 'package:boylar_plate/features/privacy_policy_screen/presentation/privacy_screen.dart';
 import 'package:boylar_plate/features/profile_screen/presentation/edit_profile_screen.dart';
 import 'package:boylar_plate/features/profile_screen/presentation/profile_screen.dart';
 import 'package:boylar_plate/navigation_screen.dart';
@@ -41,6 +42,9 @@ final class Routes {
 
   // ################## Notification User #############################
   static const String notificationScreen = '/notification_screen';
+
+  // ################## Privacy Policy #############################
+  static const String privacyPolicyScreen = '/privacy_policy_screen';
 }
 
 final class RouteGenerator {
@@ -137,6 +141,11 @@ final class RouteGenerator {
             ? _FadedTransitionRoute(
                 widget: NotificationScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => NotificationScreen());
+
+      case Routes.privacyPolicyScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: PrivacyScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => PrivacyScreen());
 
       default:
         return null;

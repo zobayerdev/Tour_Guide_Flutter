@@ -276,12 +276,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    _buildSettingsRow('Privacy Policy', AppIcons.privacySvg),
+                    GestureDetector(
+                      onTap: () {
+                        NavigationService.navigateTo(
+                          Routes.privacyPolicyScreen,
+                        );
+                      },
+                      child: _buildSettingsRow(
+                        'Privacy Policy',
+                        AppIcons.privacySvg,
+                      ),
+                    ),
                     _buildSettingsRow('Notification', AppIcons.notificationSvg),
-                    _buildSettingsRow('Language', AppIcons.language),
-                    _buildSettingsRow('Help & Support', AppIcons.help),
-                    _buildSettingsRow(
-                        'Privacy Policy', AppIcons.privacyPolicySvg),
                     GestureDetector(
                       onTap: () async {
                         try {
