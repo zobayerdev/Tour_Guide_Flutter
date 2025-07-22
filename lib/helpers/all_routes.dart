@@ -19,31 +19,31 @@
 //   Routes._internal();
 //   static Routes get instance => _routes;
 
-//   // ################## Auth User #####################
+// // ################## Auth User #####################
 //   static const String signInScreen = '/sign_in_screen';
 //   static const String signUpScreen = '/sign_up_screen';
 //   static const String forgotPassScreen = '/forget_password_screen';
 //   static const String createNewPassScreen = '/create-new_password_screen';
 //   static const String userOTPScreen = '/user_otp_screen';
 
-//   // ################## Navigation Screen #####################
+// // ################## Navigation Screen #####################
 //   static const String navigationScreen = '/navigation_screen';
 
-//   // ################## Home User #############################
+// // ################## Home User #############################
 //   static const String homeScreen = '/home_screen';
 
-//   // ################## Profile User #############################
+// // ################## Profile User #############################
 //   static const String profileScreen = '/profile_screen';
 //   static const String editProfileScreen = '/edit_profile_screen';
 
-//   // ################## Explore User #############################
+// // ################## Explore User #############################
 //   static const String exploreScreen = '/explore_screen';
 //   static const String detailsScreen = '/details_screen';
 
-//   // ################## Notification User #############################
+// // ################## Notification User #############################
 //   static const String notificationScreen = '/notification_screen';
 
-//   // ################## Privacy Policy #############################
+// // ################## Privacy Policy #############################
 //   static const String privacyPolicyScreen = '/privacy_policy_screen';
 // }
 
@@ -204,7 +204,7 @@
 //   }
 // }
 
-// * For website and also android and ios
+// * for use web, android and ios also
 import 'package:flutter/foundation.dart'
     show kIsWeb; // Import kIsWeb for web detection
 import 'dart:io' show Platform; // Conditional import for mobile platforms
