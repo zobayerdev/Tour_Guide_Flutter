@@ -1,6 +1,9 @@
+import 'package:boylar_plate/app_scroll_widget.dart';
 import 'package:boylar_plate/assets_helper/app_colors.dart';
 import 'package:boylar_plate/loading_screen.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'constants/custome_theme.dart';
 import 'helpers/all_routes.dart';
@@ -11,15 +14,27 @@ import 'networks/dio/dio.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
 
-  //await _requestPermissions();
+  // * await _requestPermissions();
   await GetStorage.init();
   diSetup();
 
-  // initiInternetChecker();
+  // * initiInternetChecker();
   DioSingleton.instance.create();
 
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +44,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     rotation();
     setInitValue();
-    return PopScope(
+    return MaterialApp(
+      scrollBehavior: AppScrollBehavior(),
+      debugShowCheckedModeBanner: false,
+      home: PopScope(
         canPop: false,
         // ignore: deprecated_member_use
         onPopInvoked: (bool didPop) async {
@@ -39,7 +57,9 @@ class MyApp extends StatelessWidget {
           builder: (context, constraints) {
             return const UtillScreenMobile();
           },
-        ));
+        ),
+      ),
+    );
   }
 }
 
